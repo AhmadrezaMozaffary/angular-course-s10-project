@@ -5,5 +5,5 @@ export class Ingredient {
   //     this.name = name;
   //     this.amount = amount;
   //   }
-  constructor(public name: string = 'n', public amount: number = 0) {}
+  constructor(public name: string, public amount: number) {}
 }

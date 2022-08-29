@@ -3,12 +3,15 @@ import { EventEmitter } from '@angular/core';
 import { Ingredient } from '../ingredient.mode';
 
 export class ShoppingListService {
-  private _ingredients: Ingredient[] = [
-    new Ingredient('Apples', 5),
-    new Ingredient('Tomatoes', 10),
-  ];
+  private _ingredients: Ingredient[] = [];
 
   ingredientsChanged = new EventEmitter<Ingredient[]>();
+
+  addIngs(ings: Ingredient[]) {
+    // ings.forEach(ing => this.addIngredient(ing)) FIXME Bad practice
+    this._ingredients.push(...ings);
+    this.ingredientsChanged.emit(this._ingredients.slice());
+  }
 
   addIngredient(ing: Ingredient) {
     this._ingredients.push(ing);
